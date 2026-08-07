@@ -1,0 +1,8 @@
+{
+  "name": "chest-xray-explorer",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'No build needed'"
+  }
+}
