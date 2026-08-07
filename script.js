@@ -5,16 +5,16 @@
 // =================================
 
 const xrayImages = [
-    "images/00000001.png",
-    "images/00000002.png",
-    "images/00000003.png",
-    "images/00000004.png",
-    "images/00000005.png",
-    "images/00000006.png",
-    "images/00000007.png",
-    "images/00000008.png",
-    "images/00000009.png",
-    "images/00000010.png"
+    "00000001_000.png",
+    "00000002_000.png",
+    "00000003_000.png",
+    "00000004_000.png",
+    "00000005_000.png",
+    "00000006_000.png",
+    "00000007_000.png",
+    "00000008_000.png",
+    "00000009_000.png",
+    "00000010_000.png"
 ];
 
 // Explanations for medical terms
