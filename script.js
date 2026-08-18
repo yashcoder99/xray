@@ -4,27 +4,28 @@
 // The filename here must exactly match the uploaded file (including uppercase/lowercase and spaces).
 // =================================
 
-const xrayImages = [
-    "xrayheart.png",  // Image 1: Human (Radiologist)
-    "00000001_000.png"// Image 2: AI (CNN)
-];
+// 1. HUMAN IMAGE AND DATA
+const humanImagePath = "xrayheart.png";
 
-// Data for the 2 X-rays (Human vs AI comparison)
-const xrayData = [
-    {
-        title: "Radiologist Analysis",
-        finding: "Cardiomegaly",
-        meaning: "Enlarged heart",
-        notes: "Patient presents with shortness of breath. Evaluation of the scan reveals an increased cardiothoracic ratio (CTR greater than 0.50), indicating significant enlargement of the cardiac silhouette. The right medial contour is particularly prominent, suggesting atrial enlargement. Margins are sharp with no evidence of acute pulmonary edema. Diagnosis is based on clinical experience and these specific structural measurements.",
-        reference: "https://doi.org/10.53347/rID-12334"
-    },
-    {
-        title: "AI Analysis (CNN)",
-        finding: "Cardiomegaly",
-        meaning: "Enlarged heart",
-        notes: "When an AI looks at this X-ray, it doesn't see a picture—it sees a massive grid of data. Every pixel is turned into a number based on how light or dark it is (from white bone to black air). The AI scans this grid for patterns, first finding simple edges and shapes. Then, it combines these shapes to recognize larger structures like the heart. By comparing the size of the heart's pixels to the rest of the chest, it can detect if the heart is larger than normal."
-    }
-];
+const humanData = {
+    title: "Radiologist Analysis",
+    finding: "Cardiomegaly",
+    meaning: "Enlarged heart",
+    notes: "Patient presents with shortness of breath. Evaluation of the scan reveals an increased cardiothoracic ratio (CTR greater than 0.50), indicating significant enlargement of the cardiac silhouette. The right medial contour is particularly prominent, suggesting atrial enlargement. Margins are sharp with no evidence of acute pulmonary edema. Diagnosis is based on clinical experience and these specific structural measurements.",
+    reference: "https://doi.org/10.53347/rID-12334"
+};
+
+
+// 2. AI IMAGE AND DATA
+const aiImagePath = "00000001_000.png";
+
+const aiData = {
+    title: "AI Analysis (CNN)",
+    finding: "Cardiomegaly",
+    meaning: "Enlarged heart",
+    notes: "When an AI looks at this X-ray, it doesn't see a picture—it sees a massive grid of data. Every pixel is turned into a number based on how light or dark it is (from white bone to black air). The AI scans this grid for patterns, first finding simple edges and shapes. Then, it combines these shapes to recognize larger structures like the heart. By comparing the size of the heart's pixels to the rest of the chest, it can detect if the heart is larger than normal."
+};
+
 
 function init() {
     createStyles();
@@ -145,39 +146,65 @@ function createPageLayout() {
 function createCards() {
     const grid = document.getElementById("grid");
 
-    for (let i = 0; i < xrayData.length; i++) {
-        const data = xrayData[i];
-        const imagePath = xrayImages[i];
-        const card = document.createElement("div");
-        card.className = "card";
+    // ==========================================
+    // CREATE THE HUMAN (RADIOLOGIST) CARD
+    // ==========================================
+    const humanCard = document.createElement("div");
+    humanCard.className = "card";
 
-        let content = "";
-        
-        if (imagePath === "") {
-            content = `<div class="placeholder">Insert ${data.title} Image Here</div>`;
-        } else {
-            // FIXED: Proper HTML entity encoding so it doesn't crash if the image is missing
-            content = `<img src="${imagePath}" alt="${data.title}" onerror="this.outerHTML='<div class=&quot;placeholder&quot; style=&quot;color: #dd4444;&quot;>Image not found:<br><strong>${imagePath}</strong><br><br><span style=&quot;font-size: 12px; color: #888;&quot;>Check exact spelling and uppercase/lowercase</span></div>'">`;
-        }
-
-        content += `
-            <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; border-radius: 4px; font-size: 16px; font-weight: bold; z-index: 1;">${data.title}</div>
-            <div class="overlay">
-                <div class="label">Finding:</div>
-                <p>${data.finding}</p>
-                
-                <div class="label">Meaning:</div>
-                <p>${data.meaning}</p>
-                
-                <div class="label">Notes / Process:</div>
-                <p>${data.notes}</p>
-                ${data.reference ? `<a href="${data.reference}" target="_blank" style="position: absolute; bottom: 15px; right: 20px; font-size: 11px; color: #aaaaaa; text-decoration: none;">Ref: ${data.reference}</a>` : ""}
-            </div>
-        `;
-
-        card.innerHTML = content;
-        grid.appendChild(card);
+    let humanImgHTML = "";
+    if (humanImagePath === "") {
+        humanImgHTML = `<div class="placeholder">Insert ${humanData.title} Image Here</div>`;
+    } else {
+        humanImgHTML = `<img src="${humanImagePath}" alt="${humanData.title}" onerror="this.outerHTML='<div class=&quot;placeholder&quot; style=&quot;color: #dd4444;&quot;>Image not found:<br><strong>${humanImagePath}</strong><br><br><span style=&quot;font-size: 12px; color: #888;&quot;>Check exact spelling and uppercase/lowercase</span></div>'">`;
     }
+
+    humanCard.innerHTML = `
+        ${humanImgHTML}
+        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; border-radius: 4px; font-size: 16px; font-weight: bold; z-index: 1;">${humanData.title}</div>
+        <div class="overlay">
+            <div class="label">Finding:</div>
+            <p>${humanData.finding}</p>
+            
+            <div class="label">Meaning:</div>
+            <p>${humanData.meaning}</p>
+            
+            <div class="label">Notes / Process:</div>
+            <p>${humanData.notes}</p>
+            <a href="${humanData.reference}" target="_blank" style="position: absolute; bottom: 15px; right: 20px; font-size: 11px; color: #aaaaaa; text-decoration: none;">Ref: ${humanData.reference}</a>
+        </div>
+    `;
+    grid.appendChild(humanCard);
+
+
+    // ==========================================
+    // CREATE THE AI (CNN) CARD
+    // ==========================================
+    const aiCard = document.createElement("div");
+    aiCard.className = "card";
+
+    let aiImgHTML = "";
+    if (aiImagePath === "") {
+        aiImgHTML = `<div class="placeholder">Insert ${aiData.title} Image Here</div>`;
+    } else {
+        aiImgHTML = `<img src="${aiImagePath}" alt="${aiData.title}" onerror="this.outerHTML='<div class=&quot;placeholder&quot; style=&quot;color: #dd4444;&quot;>Image not found:<br><strong>${aiImagePath}</strong><br><br><span style=&quot;font-size: 12px; color: #888;&quot;>Check exact spelling and uppercase/lowercase</span></div>'">`;
+    }
+
+    aiCard.innerHTML = `
+        ${aiImgHTML}
+        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; border-radius: 4px; font-size: 16px; font-weight: bold; z-index: 1;">${aiData.title}</div>
+        <div class="overlay">
+            <div class="label">Finding:</div>
+            <p>${aiData.finding}</p>
+            
+            <div class="label">Meaning:</div>
+            <p>${aiData.meaning}</p>
+            
+            <div class="label">Notes / Process:</div>
+            <p>${aiData.notes}</p>
+        </div>
+    `;
+    grid.appendChild(aiCard);
 }
 
 // Start the page
