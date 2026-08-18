@@ -5,7 +5,7 @@
 // =================================
 
 const xrayImages = [
-    "images/radiologist_xray.png", // Image 1: Human (Radiologist)
+    "pic 17.jpg", // Image 1: Human (Radiologist)
     "images/ai_xray.png"           // Image 2: AI (CNN)
 ];
 
