@@ -1,10 +1,4 @@
-// =================================
-// ADD YOUR X-RAY IMAGE FILES HERE
-// Upload your image files directly to your GitHub repository (next to index.html).
-// The filename here must exactly match the uploaded file (including uppercase/lowercase and spaces).
-// =================================
 
-// 1. HUMAN IMAGE AND DATA
 const humanImagePath = "xrayheart.png";
 
 const humanData = {
@@ -16,14 +10,14 @@ const humanData = {
 };
 
 
-// 2. AI IMAGE AND DATA
 const aiImagePath = "00000001_000.png";
 
 const aiData = {
     title: "AI Analysis (CNN)",
     finding: "Cardiomegaly",
     meaning: "Enlarged heart",
-    notes: "When an AI looks at this X-ray, it sees a huge grid of colors. Every pixel is turned into a number based on how light or dark it is (from white bone to black air). AI can detect clusters of the same color and determine if their density is high enough to be considered an abnormality. In the detecting process, the AI scans the pixel grid for patterns, first finding simple edges and shapes. Then, it combines these shapes to recognize larger structures like the heart. By comparing the size of the heart's pixels to the rest of the chest, it can detect if the heart is larger than normal."
+    notes: "When an AI looks at this X-ray, it sees a huge grid of colors. Every pixel is turned into a number based on how light or dark it is (from white bone to black air). AI can detect clusters of the same color and determine if their density is high enough to be considered an abnormality. In the detecting process, the AI scans the pixel grid for patterns, first finding simple edges and shapes. Then, it combines these shapes to recognize larger structures like the heart. By comparing the size of the heart's pixels to the rest of the chest, it can detect if the heart is larger than normal.",
+    reference: "https://doi.org/10.1038/s41568-018-0016-5"
 };
 
 
@@ -145,10 +139,6 @@ function createPageLayout() {
 
 function createCards() {
     const grid = document.getElementById("grid");
-
-    // ==========================================
-    // CREATE THE HUMAN (RADIOLOGIST) CARD
-    // ==========================================
     const humanCard = document.createElement("div");
     humanCard.className = "card";
 
@@ -175,11 +165,6 @@ function createCards() {
         </div>
     `;
     grid.appendChild(humanCard);
-
-
-    // ==========================================
-    // CREATE THE AI (CNN) CARD
-    // ==========================================
     const aiCard = document.createElement("div");
     aiCard.className = "card";
 
@@ -195,17 +180,15 @@ function createCards() {
         <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; border-radius: 4px; font-size: 16px; font-weight: bold; z-index: 1;">${aiData.title}</div>
         <div class="overlay">
             <div class="label">Finding:</div>
-            <p>${aiData.finding}</p>
-            
-            <div class="label">Meaning:</div>
-            <p>${aiData.meaning}</p>
+            <p>${aiData.finding}</p>  
+       <div class="label">Meaning:</div>
+       <p>${aiData.meaning}</p>
             
             <div class="label">Notes / Process:</div>
-            <p>${aiData.notes}</p>
+     <p>${aiData.notes}</p>
+            <a href="${aiData.reference}" target="_blank" style="position: absolute; bottom: 15px; right: 20px; font-size: 11px; color: #aaaaaa; text-decoration: none;">Ref: ${aiData.reference}</a>
         </div>
     `;
     grid.appendChild(aiCard);
 }
-
-// Start the page
 init();
