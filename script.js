@@ -1,12 +1,12 @@
 // =================================
 // ADD YOUR X-RAY IMAGE FILES HERE
-// Upload your PNG files to the "images" folder in GitHub.
-// The filename here must exactly match the uploaded file.
+// Upload your image files directly to your GitHub repository (next to index.html).
+// The filename here must exactly match the uploaded file (including uppercase/lowercase and spaces).
 // =================================
 
 const xrayImages = [
-    "xrayheart.png", // Image 1: Human (Radiologist)
-    "00000001_000.png"           // Image 2: AI (CNN)
+    "xrayheart.png",      // Image 1: Human (Radiologist)
+    "00000001_000.png"    // Image 2: AI (CNN)
 ];
 
 // Data for the 2 X-rays (Human vs AI comparison)
@@ -156,7 +156,8 @@ function createCards() {
         if (imagePath === "") {
             content = `<div class="placeholder">Insert ${data.title} Image Here</div>`;
         } else {
-            content = `<img src="${imagePath}" alt="${data.title}" onerror="this.outerHTML='<div class=\\'placeholder\\'>Insert ${data.title} Image Here</div>'">`;
+            // FIXED: Proper HTML entity encoding so it doesn't crash if the image is missing
+            content = `<img src="${imagePath}" alt="${data.title}" onerror="this.outerHTML='<div class=&quot;placeholder&quot; style=&quot;color: #dd4444;&quot;>Image not found:<br><strong>${imagePath}</strong><br><br><span style=&quot;font-size: 12px; color: #888;&quot;>Check exact spelling and uppercase/lowercase</span></div>'">`;
         }
 
         content += `
