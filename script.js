@@ -5,8 +5,8 @@
 // =================================
 
 const xrayImages = [
-    "xrayheart.png",      // Image 1: Human (Radiologist)
-    "00000001_000.png"    // Image 2: AI (CNN)
+    "xrayheart.png",  // Image 1: Human (Radiologist)
+    "00000001_000.png"// Image 2: AI (CNN)
 ];
 
 // Data for the 2 X-rays (Human vs AI comparison)
