@@ -16,7 +16,7 @@ const aiData = {
     title: "AI Analysis (CNN)",
     finding: "Cardiomegaly",
     meaning: "Enlarged heart",
-    notes: "When an AI looks at this X-ray, it sees a huge grid of colors. Every pixel is turned into a number based on how light or dark it is (from white bone to black air). AI can detect clusters of the same color and determine if their density is high enough to be considered an abnormality. In the detecting process, the AI scans the pixel grid for patterns, first finding simple edges and shapes. Then, it combines these shapes to recognize larger structures like the heart. By comparing the size of the heart's pixels to the rest of the chest, it can detect if the heart is larger than normal. Reference: https://doi.org/10.1038/s41568-018-0016-5",
+    notes: "When an AI looks at this X-ray, it sees a huge grid of colors. Every pixel is turned into a number based on how light or dark it is (from white bone to black air). AI can detect clusters of the same color and determine if their density is high enough to be considered an abnormality. In the detecting process, the AI scans the pixel grid for patterns, first finding simple edges and shapes. Then, it combines these shapes to recognize larger structures like the heart. By comparing the size of the heart's pixels to the rest of the chest, it can detect if the heart is larger than normal.",
     reference: "https://doi.org/10.1038/s41568-018-0016-5"
 };
 
