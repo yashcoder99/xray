@@ -1,23 +1,24 @@
 
-const humanImagePath = "xrayheart.png";
+const humanImagePath = "IMAGE A LEFT.png";
 
 const humanData = {
     title: "Radiologist Analysis",
-    finding: "Cardiomegaly",
-    meaning: "Enlarged heart",
-    notes: "Patient presents with shortness of breath. Evaluation of the scan reveals an increased cardiothoracic ratio (CTR greater than 0.50), indicating significant enlargement of the cardiac silhouette. The right medial contour is particularly prominent, suggesting atrial enlargement. Margins are sharp with no evidence of acute pulmonary edema. Diagnosis is based on clinical experience and these specific structural measurements.",
-    reference: "https://doi.org/10.53347/rID-12334"
+    finding: "None",
+    meaning: "No evidence of acute pulmonary disease",
+    notes: "FINDINGS: Cardiovascular: The cardiac silhouette is normal in size. Pulmonary: There is no focal consolidation. There are no pleural effusions. There is no evidence of pneumothorax. Musculoskeletal: Mild degenerative changes are noted in the osseous structures.",
+    reference: "https://doi.org/10.1016/j.rmcr.2022.101733"
 };
 
 
-const aiImagePath = "00000001_000.png";
+const aiImagePath = "IMAGE A HEAT.png";
 
 const aiData = {
-    title: "AI Analysis (CNN)",
-    finding: "Cardiomegaly",
-    meaning: "Enlarged heart",
-    notes: "When an AI looks at this X-ray, it sees a huge grid of colors. Every pixel is turned into a number based on how light or dark it is (from white bone to black air). AI can detect clusters of the same color and determine if their density is high enough to be considered an abnormality. In the detecting process, the AI scans the pixel grid for patterns, first finding simple edges and shapes. Then, it combines these shapes to recognize larger structures like the heart. By comparing the size of the heart's pixels to the rest of the chest, it can detect if the heart is larger than normal.",
-    reference: "https://doi.org/10.1038/s41568-018-0016-5"
+    title: "Chest-CAD (computer-assisted detection AI)",
+    finding: "squamous cell carcinoma",
+    meaning: "Cancer",
+    notes: "Quoted from source: Chest-CAD analysis identified suspicious regions of interest (ROIs) in the lungs, with one ROI encompassing early lung cancer in the left lung. A heatmap, which is an intermediate processing output of Chest-CAD and not shown to the end user, clearly focused on the known left infrahilar malignancy and post-obstructive left lower lung atelectasis. A heatmap is not part of the output of the FDA cleared device and provided here for illustrative purposes.
+",
+    reference: "https://doi.org/10.1016/j.rmcr.2022.101733"
 };
 
 
