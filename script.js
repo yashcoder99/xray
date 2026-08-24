@@ -16,7 +16,7 @@ const aiData = {
     title: "Chest-CAD (computer-assisted detection AI)",
     finding: "squamous cell carcinoma",
     meaning: "Cancer",
-    notes: "Quoted from source: Chest-CAD analysis identified suspicious ROIs in the lungs, with one ROI encompassing early lung cancer in the left lung. A heatmap, which is an intermediate processing output of Chest-CAD and not shown to the end user, clearly focused on the known left infrahilar malignancy and post-obstructive left lower lung atelectasis.",
+    notes: "Quoted from source: Chest-CAD analysis identified suspicious ROIs in the lungs, with one ROI encompassing early lung cancer in the left lung.",
     reference: "https://doi.org/10.1016/j.rmcr.2022.101733"
 };
 
