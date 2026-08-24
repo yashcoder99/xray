@@ -1,4 +1,3 @@
-
 const humanImagePath = "IMAGE A LEFT.png";
 
 const humanData = {
