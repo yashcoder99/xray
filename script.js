@@ -1,4 +1,4 @@
-const humanImagePath = "IMAGE A LEFT.png";
+const humanImagePath = "Lung2OG.png";
 
 const humanData = {
     title: "Radiologist Analysis",
@@ -9,7 +9,7 @@ const humanData = {
 };
 
 
-const aiImagePath = "IMAGE A HEAT.png";
+const aiImagePath = "Lung1.png";
 
 const aiData = {
     title: "Chest-CAD (computer-assisted detection AI)",
