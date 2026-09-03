@@ -370,6 +370,9 @@ document.body.innerHTML = "";
 const wrap = document.createElement("div");
 wrap.className = "wrap";
 
+const kicker = document.createElement("p");
+kicker.className = "kicker";
+kicker.textContent = "Case File — Radiology";
 
 const heading = document.createElement("h1");
 heading.textContent = "The Comparison of Human and AI reasoning";
@@ -530,6 +533,9 @@ exhibits.appendChild(humanExhibit);
 exhibits.appendChild(spine);
 exhibits.appendChild(aiExhibit);
 
+const verdict = document.createElement("p");
+verdict.className = "verdict";
+verdict.textContent = "The two reads did not agree.";
 
 const footer = document.createElement("footer");
 footer.className = "cite";
