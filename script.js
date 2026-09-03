@@ -418,7 +418,7 @@ function createExhibit(imagePath, data) {
     } else {
         const mark = document.createElement("div");
         mark.className = "mark";
-        mark.textContent = "Reviewed";
+        mark.textContent = "No Anomaly";
         mark.setAttribute("aria-hidden", "true");
         plate.appendChild(mark);
     }
