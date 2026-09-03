@@ -341,7 +341,7 @@ style.textContent = `
 
 document.head.appendChild(style);
 
-document.title = "Same Film, Split Verdict — Human vs. AI";
+document.title = "The Comparison of Human and AI reasoning";
 
 const metaCharset = document.createElement("meta");
 metaCharset.setAttribute("charset", "UTF-8");
@@ -370,12 +370,9 @@ document.body.innerHTML = "";
 const wrap = document.createElement("div");
 wrap.className = "wrap";
 
-const kicker = document.createElement("p");
-kicker.className = "kicker";
-kicker.textContent = "Case File — Radiology";
 
 const heading = document.createElement("h1");
-heading.textContent = "Same film. Split verdict.";
+heading.textContent = "The Comparison of Human and AI reasoning";
 
 const subtitle = document.createElement("p");
 subtitle.className = "sub";
@@ -384,7 +381,7 @@ subtitle.textContent =
 
 const note = document.createElement("p");
 note.className = "note";
-note.textContent = "For demonstration only — not a diagnostic tool.";
+note.textContent = "For demonstration only.";
 
 const rule = document.createElement("hr");
 rule.className = "rule";
@@ -432,7 +429,7 @@ function createExhibit(imagePath, data) {
     if (data.status === "flag") {
         const stamp = document.createElement("div");
         stamp.className = "stamp";
-        stamp.textContent = "Flagged";
+        stamp.textContent = "Anomaly";
         stamp.setAttribute("aria-hidden", "true");
         plate.appendChild(stamp);
     } else {
@@ -533,9 +530,6 @@ exhibits.appendChild(humanExhibit);
 exhibits.appendChild(spine);
 exhibits.appendChild(aiExhibit);
 
-const verdict = document.createElement("p");
-verdict.className = "verdict";
-verdict.textContent = "The two reads did not agree.";
 
 const footer = document.createElement("footer");
 footer.className = "cite";
