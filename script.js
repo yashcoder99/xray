@@ -1,4 +1,3 @@
-
 const humanImagePath = "Lung2OG.png";
 
 const humanData = {
@@ -421,7 +420,7 @@ function createExhibit(imagePath, data) {
     const pending = document.createElement("div");
     pending.className = "fig-pending";
     pending.textContent =
-        "Fig. " + data.exhibit + " — “" + imagePath + "” not found";
+        "Fig. " + data.exhibit + " — \"" + imagePath + "\" not found";
 
     image.addEventListener("error", function() {
         plate.className = "plate is-empty";
@@ -547,7 +546,7 @@ const sourceStrong = document.createElement("strong");
 sourceStrong.textContent = "Source.";
 
 const sourceText = document.createTextNode(
-    " Sicular et al., “Reevaluation of missed lung cancer with artificial intelligence,” Respiratory Medicine Case Reports 39 (2022): 101733 — "
+    " Sicular et al., \"Reevaluation of missed lung cancer with artificial intelligence,\" Respiratory Medicine Case Reports 39 (2022): 101733 — "
 );
 
 const sourceLink = document.createElement("a");
@@ -572,4 +571,3 @@ wrap.appendChild(verdict);
 wrap.appendChild(footer);
 
 document.body.appendChild(wrap);
-```
