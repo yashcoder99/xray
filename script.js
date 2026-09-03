@@ -279,14 +279,6 @@ style.textContent = `
         margin: 0;
     }
 
-    .verdict {
-        text-align: center;
-        font-family: var(--serif);
-        font-style: italic;
-        font-size: 15px;
-        color: var(--ink-muted);
-        margin: 48px 0 0;
-    }
 
     footer.cite {
         margin-top: 56px;
@@ -533,9 +525,6 @@ exhibits.appendChild(humanExhibit);
 exhibits.appendChild(spine);
 exhibits.appendChild(aiExhibit);
 
-const verdict = document.createElement("p");
-verdict.className = "verdict";
-verdict.textContent = "The two reads did not agree.";
 
 const footer = document.createElement("footer");
 footer.className = "cite";
@@ -567,7 +556,6 @@ wrap.appendChild(subtitle);
 wrap.appendChild(note);
 wrap.appendChild(rule);
 wrap.appendChild(exhibits);
-wrap.appendChild(verdict);
 wrap.appendChild(footer);
 
 document.body.appendChild(wrap);
