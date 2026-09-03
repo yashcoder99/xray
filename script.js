@@ -74,15 +74,6 @@ style.textContent = `
         padding: 88px 24px 64px;
     }
 
-    .kicker {
-        font-size: 12px;
-        letter-spacing: .16em;
-        text-transform: uppercase;
-        color: var(--ink-muted);
-        margin: 0 0 22px;
-        text-align: center;
-    }
-
     h1 {
         font-family: var(--serif);
         font-size: clamp(32px, 5vw, 52px);
@@ -362,9 +353,6 @@ document.body.innerHTML = "";
 const wrap = document.createElement("div");
 wrap.className = "wrap";
 
-const kicker = document.createElement("p");
-kicker.className = "kicker";
-kicker.textContent = "Case File — Radiology";
 
 const heading = document.createElement("h1");
 heading.textContent = "The Comparison of Human and AI reasoning";
@@ -550,7 +538,6 @@ sourceParagraph.appendChild(sourceLink);
 
 footer.appendChild(sourceParagraph);
 
-wrap.appendChild(kicker);
 wrap.appendChild(heading);
 wrap.appendChild(subtitle);
 wrap.appendChild(note);
