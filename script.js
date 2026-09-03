@@ -1,7 +1,7 @@
+
 const humanImagePath = "Lung2OG.png";
 
 const humanData = {
-    id: "human",
     exhibit: "A",
     title: "Radiologist Analysis",
     status: "clear",
@@ -14,7 +14,6 @@ const humanData = {
 const aiImagePath = "Lung1.png";
 
 const aiData = {
-    id: "ai",
     exhibit: "B",
     title: "Chest-CAD (computer-assisted detection AI)",
     status: "flag",
@@ -24,13 +23,15 @@ const aiData = {
     alt: "Chest X-ray — Chest-CAD (AI) read"
 };
 
-const styles = `
+const style = document.createElement("style");
+
+style.textContent = `
     :root {
         --paper: #fbfaf7;
         --plate: #f1efe9;
         --ink: #17181a;
         --ink-muted: #5c5e61;
-        --rule: rgba(23, 24, 26, .16);
+        --rule: rgba(23,24,26,.16);
         --alert: #b3271f;
         --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", serif;
         --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -339,140 +340,147 @@ const styles = `
     }
 `;
 
-function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    }[character]));
-}
+document.head.appendChild(style);
 
-function createElement(tag, options = {}) {
-    const element = document.createElement(tag);
+document.title = "Same Film, Split Verdict — Human vs. AI";
 
-    if (options.className) {
-        element.className = options.className;
-    }
+const metaCharset = document.createElement("meta");
+metaCharset.setAttribute("charset", "UTF-8");
+document.head.appendChild(metaCharset);
 
-    if (options.textContent !== undefined) {
-        element.textContent = options.textContent;
-    }
+const metaViewport = document.createElement("meta");
+metaViewport.setAttribute("name", "viewport");
+metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+document.head.appendChild(metaViewport);
 
-    if (options.attributes) {
-        for (const [name, value] of Object.entries(options.attributes)) {
-            element.setAttribute(name, value);
-        }
-    }
+const metaTheme = document.createElement("meta");
+metaTheme.setAttribute("name", "theme-color");
+metaTheme.setAttribute("content", "#fbfaf7");
+document.head.appendChild(metaTheme);
 
-    return element;
-}
+const metaDescription = document.createElement("meta");
+metaDescription.setAttribute("name", "description");
+metaDescription.setAttribute(
+    "content",
+    "A comparison of a radiologist's and an AI system's read of the same chest X-ray."
+);
+document.head.appendChild(metaDescription);
+
+document.body.innerHTML = "";
+
+const wrap = document.createElement("div");
+wrap.className = "wrap";
+
+const kicker = document.createElement("p");
+kicker.className = "kicker";
+kicker.textContent = "Case File — Radiology";
+
+const heading = document.createElement("h1");
+heading.textContent = "Same film. Split verdict.";
+
+const subtitle = document.createElement("p");
+subtitle.className = "sub";
+subtitle.textContent =
+    "A chest X-ray, read independently by a radiologist and an AI system.";
+
+const note = document.createElement("p");
+note.className = "note";
+note.textContent = "For demonstration only — not a diagnostic tool.";
+
+const rule = document.createElement("hr");
+rule.className = "rule";
+
+const exhibits = document.createElement("div");
+exhibits.className = "exhibits";
+exhibits.id = "grid";
 
 function createExhibit(imagePath, data) {
-    const exhibit = createElement("div", {
-        className: data.status === "flag" ? "exhibit exhibit--alert" : "exhibit"
-    });
-
-    const label = createElement("p", {
-        className: "exhibit__label",
-        textContent: `Exhibit ${data.exhibit}`
-    });
-
-    const source = createElement("p", {
-        className: "exhibit__source",
-        textContent: data.title
-    });
-
-    const plate = createElement("div", {
-        className: "plate"
-    });
-
-    const figureMessage = createElement("div", {
-        className: "fig-pending"
-    });
-
-    if (imagePath) {
-        const image = createElement("img", {
-            attributes: {
-                src: imagePath,
-                alt: data.alt
-            }
-        });
-
-        image.addEventListener("error", () => {
-            plate.classList.add("is-empty");
-        }, { once: true });
-
-        figureMessage.textContent = `Fig. ${data.exhibit} — "${imagePath}" not found`;
-
-        plate.appendChild(image);
-    } else {
-        plate.classList.add("is-empty");
-        figureMessage.textContent = `Fig. ${data.exhibit} — image pending`;
-    }
+    const exhibit = document.createElement("div");
 
     if (data.status === "flag") {
-        const stamp = createElement("div", {
-            className: "stamp",
-            textContent: "Flagged"
-        });
+        exhibit.className = "exhibit exhibit--alert";
+    } else {
+        exhibit.className = "exhibit";
+    }
 
+    const label = document.createElement("p");
+    label.className = "exhibit__label";
+    label.textContent = "Exhibit " + data.exhibit;
+
+    const source = document.createElement("p");
+    source.className = "exhibit__source";
+    source.textContent = data.title;
+
+    const plate = document.createElement("div");
+    plate.className = "plate";
+
+    const image = document.createElement("img");
+    image.src = imagePath;
+    image.alt = data.alt;
+
+    const pending = document.createElement("div");
+    pending.className = "fig-pending";
+    pending.textContent =
+        "Fig. " + data.exhibit + " — “" + imagePath + "” not found";
+
+    image.addEventListener("error", function() {
+        plate.className = "plate is-empty";
+    });
+
+    plate.appendChild(image);
+    plate.appendChild(pending);
+
+    if (data.status === "flag") {
+        const stamp = document.createElement("div");
+        stamp.className = "stamp";
+        stamp.textContent = "Flagged";
         stamp.setAttribute("aria-hidden", "true");
         plate.appendChild(stamp);
     } else {
-        const mark = createElement("div", {
-            className: "mark",
-            textContent: "Reviewed"
-        });
-
+        const mark = document.createElement("div");
+        mark.className = "mark";
+        mark.textContent = "Reviewed";
         mark.setAttribute("aria-hidden", "true");
         plate.appendChild(mark);
     }
 
-    plate.appendChild(figureMessage);
+    const findingField = document.createElement("div");
+    findingField.className = "field is-finding";
 
-    const findingField = createElement("div", {
-        className: "field is-finding"
-    });
+    const findingLabel = document.createElement("p");
+    findingLabel.className = "field__label";
+    findingLabel.textContent = "Finding";
 
-    const findingLabel = createElement("p", {
-        className: "field__label",
-        textContent: "Finding"
-    });
-
-    const findingValue = createElement("p", {
-        className: "field__value",
-        textContent: data.finding
-    });
+    const findingValue = document.createElement("p");
+    findingValue.className = "field__value";
+    findingValue.textContent = data.finding;
 
     findingField.appendChild(findingLabel);
     findingField.appendChild(findingValue);
 
-    const meaningField = createElement("div", {
-        className: "field"
-    });
+    const meaningField = document.createElement("div");
+    meaningField.className = "field";
 
-    const meaningLabel = createElement("p", {
-        className: "field__label",
-        textContent: "Meaning"
-    });
+    const meaningLabel = document.createElement("p");
+    meaningLabel.className = "field__label";
+    meaningLabel.textContent = "Meaning";
 
-    const meaningValue = createElement("p", {
-        className: "field__value",
-        textContent: data.meaning
-    });
+    const meaningValue = document.createElement("p");
+    meaningValue.className = "field__value";
+    meaningValue.textContent = data.meaning;
 
     meaningField.appendChild(meaningLabel);
     meaningField.appendChild(meaningValue);
 
-    const details = createElement("details");
+    const details = document.createElement("details");
 
-    const summary = createElement("summary", {
-        textContent: "Full read"
-    });
+    const summary = document.createElement("summary");
+    summary.textContent = "Full read ";
 
-    const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const arrow = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg"
+    );
 
     arrow.setAttribute("class", "chev");
     arrow.setAttribute("viewBox", "0 0 24 24");
@@ -483,19 +491,21 @@ function createExhibit(imagePath, data) {
     arrow.setAttribute("stroke-linejoin", "round");
     arrow.setAttribute("aria-hidden", "true");
 
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", "M6 9l6 6 6-6");
+    const arrowPath = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "path"
+    );
 
-    arrow.appendChild(path);
+    arrowPath.setAttribute("d", "M6 9l6 6 6-6");
+
+    arrow.appendChild(arrowPath);
     summary.appendChild(arrow);
 
-    const findings = createElement("div", {
-        className: "findings"
-    });
+    const findings = document.createElement("div");
+    findings.className = "findings";
 
-    const findingsText = createElement("p", {
-        textContent: data.notes
-    });
+    const findingsText = document.createElement("p");
+    findingsText.textContent = data.notes;
 
     findings.appendChild(findingsText);
 
@@ -512,138 +522,54 @@ function createExhibit(imagePath, data) {
     return exhibit;
 }
 
-function buildPage() {
-    document.title = "Same Film, Split Verdict — Human vs. AI";
+const humanExhibit = createExhibit(humanImagePath, humanData);
 
-    const metaViewport = createElement("meta", {
-        attributes: {
-            name: "viewport",
-            content: "width=device-width, initial-scale=1.0"
-        }
-    });
+const spine = document.createElement("div");
+spine.className = "spine";
+spine.setAttribute("aria-hidden", "true");
 
-    const metaCharset = createElement("meta", {
-        attributes: {
-            charset: "UTF-8"
-        }
-    });
+const aiExhibit = createExhibit(aiImagePath, aiData);
 
-    const metaTheme = createElement("meta", {
-        attributes: {
-            name: "theme-color",
-            content: "#fbfaf7"
-        }
-    });
+exhibits.appendChild(humanExhibit);
+exhibits.appendChild(spine);
+exhibits.appendChild(aiExhibit);
 
-    const metaDescription = createElement("meta", {
-        attributes: {
-            name: "description",
-            content: "A comparison of a radiologist's and an AI system's read of the same chest X-ray."
-        }
-    });
+const verdict = document.createElement("p");
+verdict.className = "verdict";
+verdict.textContent = "The two reads did not agree.";
 
-    const styleElement = createElement("style");
-    styleElement.textContent = styles;
+const footer = document.createElement("footer");
+footer.className = "cite";
 
-    document.head.appendChild(metaCharset);
-    document.head.appendChild(metaViewport);
-    document.head.appendChild(metaTheme);
-    document.head.appendChild(metaDescription);
-    document.head.appendChild(styleElement);
+const sourceParagraph = document.createElement("p");
 
-    document.body.innerHTML = "";
+const sourceStrong = document.createElement("strong");
+sourceStrong.textContent = "Source.";
 
-    const wrapper = createElement("div", {
-        className: "wrap"
-    });
+const sourceText = document.createTextNode(
+    " Sicular et al., “Reevaluation of missed lung cancer with artificial intelligence,” Respiratory Medicine Case Reports 39 (2022): 101733 — "
+);
 
-    const kicker = createElement("p", {
-        className: "kicker",
-        textContent: "Case File — Radiology"
-    });
+const sourceLink = document.createElement("a");
+sourceLink.href = "https://doi.org/10.1016/j.rmcr.2022.101733";
+sourceLink.target = "_blank";
+sourceLink.rel = "noopener noreferrer";
+sourceLink.textContent = "doi.org/10.1016/j.rmcr.2022.101733";
 
-    const heading = createElement("h1", {
-        textContent: "Same film. Split verdict."
-    });
+sourceParagraph.appendChild(sourceStrong);
+sourceParagraph.appendChild(sourceText);
+sourceParagraph.appendChild(sourceLink);
 
-    const subtitle = createElement("p", {
-        className: "sub",
-        textContent: "A chest X-ray, read independently by a radiologist and an AI system."
-    });
+footer.appendChild(sourceParagraph);
 
-    const note = createElement("p", {
-        className: "note",
-        textContent: "For demonstration only — not a diagnostic tool."
-    });
+wrap.appendChild(kicker);
+wrap.appendChild(heading);
+wrap.appendChild(subtitle);
+wrap.appendChild(note);
+wrap.appendChild(rule);
+wrap.appendChild(exhibits);
+wrap.appendChild(verdict);
+wrap.appendChild(footer);
 
-    const rule = createElement("hr", {
-        className: "rule"
-    });
-
-    const exhibits = createElement("div", {
-        className: "exhibits",
-        attributes: {
-            id: "grid"
-        }
-    });
-
-    const humanExhibit = createExhibit(humanImagePath, humanData);
-
-    const spine = createElement("div", {
-        className: "spine"
-    });
-
-    spine.setAttribute("aria-hidden", "true");
-
-    const aiExhibit = createExhibit(aiImagePath, aiData);
-
-    exhibits.appendChild(humanExhibit);
-    exhibits.appendChild(spine);
-    exhibits.appendChild(aiExhibit);
-
-    const verdict = createElement("p", {
-        className: "verdict",
-        textContent: "The two reads did not agree."
-    });
-
-    const footer = createElement("footer", {
-        className: "cite"
-    });
-
-    const sourceParagraph = createElement("p");
-
-    const sourceStrong = createElement("strong", {
-        textContent: "Source."
-    });
-
-    const sourceText = document.createTextNode(
-        ' Sicular et al., “Reevaluation of missed lung cancer with artificial intelligence,” Respiratory Medicine Case Reports 39 (2022): 101733 — '
-    );
-
-    const sourceLink = createElement("a", {
-        textContent: "doi.org/10.1016/j.rmcr.2022.101733",
-        attributes: {
-            href: "https://doi.org/10.1016/j.rmcr.2022.101733",
-            target: "_blank",
-            rel: "noopener noreferrer"
-        }
-    });
-
-    sourceParagraph.appendChild(sourceStrong);
-    sourceParagraph.appendChild(sourceText);
-    sourceParagraph.appendChild(sourceLink);
-    footer.appendChild(sourceParagraph);
-
-    wrapper.appendChild(kicker);
-    wrapper.appendChild(heading);
-    wrapper.appendChild(subtitle);
-    wrapper.appendChild(note);
-    wrapper.appendChild(rule);
-    wrapper.appendChild(exhibits);
-    wrapper.appendChild(verdict);
-    wrapper.appendChild(footer);
-
-    document.body.appendChild(wrapper);
-}
-
-buildPage();
+document.body.appendChild(wrap);
+```
