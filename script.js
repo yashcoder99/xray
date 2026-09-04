@@ -37,8 +37,8 @@ const style = document.createElement("style");
 
 style.textContent = `
     :root {
-        --paper: #fbfaf7;
-        --plate: #f1efe9;
+        --paper: #ffffff;
+        --plate: #ffffff;
         --ink: #17181a;
         --ink-muted: #5c5e61;
         --rule: rgba(23,24,26,.16);
@@ -58,7 +58,7 @@ style.textContent = `
     body {
         margin: 0;
         background-color: var(--paper);
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+        background-image: none;
         color: var(--ink);
         font-family: var(--serif);
         line-height: 1.6;
