@@ -360,7 +360,7 @@ heading.textContent = "The Comparison of Human and AI reasoning";
 const subtitle = document.createElement("p");
 subtitle.className = "sub";
 subtitle.textContent =
-    "LEFT IMAGE, No obvious sign of lung disease detected by radiologist (human)      RIGHT IMAGE, Suspicious “Squamous Cell Carcinoma” diagnosis by AI-driven tool";
+    "LEFT IMAGE, No obvious sign of lung disease detected by radiologist (human) \nRIGHT IMAGE, Suspicious “Squamous Cell Carcinoma” diagnosis by AI-driven tool";
 
 const note = document.createElement("p");
 note.className = "note";
