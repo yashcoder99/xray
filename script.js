@@ -387,7 +387,7 @@ subtitle.textContent =
 
 const note = document.createElement("p");
 note.className = "note";
-note.textContent = "For demonstration only.";
+note.textContent = "For demonstration purposes only.";
 
 const rule = document.createElement("hr");
 rule.className = "rule";
