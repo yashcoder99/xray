@@ -6,10 +6,10 @@ var humanTitle = "Radiologist Analysis";
 var humanStatus = "clear";
 var humanAlt = "Chest X-ray — radiologist read";
 var humanPoints = [
-    "cardiac silhouette normal in size",
-    "no focal consolidation",
-    "no pleural effusions",
-    "no evidence of pneumothorax"
+    "Cardiac silhouette normal in size",
+    "No focal consolidation",
+    "No pleural effusions",
+    "No evidence of pneumothorax"
 ];
 
 var aiExhibit = "B";
@@ -17,9 +17,9 @@ var aiTitle = "Chest-CAD (computer-assisted detection AI)";
 var aiStatus = "flag";
 var aiAlt = "Chest X-ray — Chest-CAD (AI) read";
 var aiPoints = [
-    "early lung cancer (left) detected by Chest-CAD",
-    "left infrahilar malignancy",
-    "post-obstructive left lower lung atelectasis"
+    "Early lung cancer (left) detected by Chest-CAD",
+    "Left infrahilar malignancy",
+    "Post-obstructive left lower lung atelectasis"
 ];
 
 var style = document.createElement("style");
