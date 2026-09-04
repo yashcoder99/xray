@@ -324,7 +324,7 @@ style.textContent = `
 
 document.head.appendChild(style);
 
-document.title = "The Comparison of Human and AI reasoning";
+document.title = "AI-driven Diagnosis of Potential Lung Disease";
 
 const metaCharset = document.createElement("meta");
 metaCharset.setAttribute("charset", "UTF-8");
@@ -360,7 +360,7 @@ heading.textContent = "The Comparison of Human and AI reasoning";
 const subtitle = document.createElement("p");
 subtitle.className = "sub";
 subtitle.textContent =
-    "A chest X-ray, read independently by a radiologist and an AI system.";
+    "LEFT IMAGE, No obvious sign of lung disease detected by radiologist (human)      RIGHT IMAGE, Suspicious “Squamous Cell Carcinoma” diagnosis by AI-driven tool";
 
 const note = document.createElement("p");
 note.className = "note";
