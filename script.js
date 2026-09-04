@@ -7,7 +7,13 @@ const humanData = {
     finding: "None",
     meaning: "No evidence of acute pulmonary disease",
     notes: "FINDINGS: Cardiovascular: The cardiac silhouette is normal in size. Pulmonary: There is no focal consolidation. There are no pleural effusions. There is no evidence of pneumothorax. Musculoskeletal: Mild degenerative changes are noted in the osseous structures.",
-    alt: "Chest X-ray — radiologist read"
+    alt: "Chest X-ray — radiologist read",
+    points: [
+        "cardiac silhouette normal in size",
+        "no focal consolidation",
+        "no pleural effusions",
+        "no evidence of pneumothorax"
+    ]
 };
 
 const aiImagePath = "Lung1.png";
@@ -19,7 +25,12 @@ const aiData = {
     finding: "Squamous Cell Carcinoma",
     meaning: "Cancer",
     notes: "Quoted from source: Chest-CAD analysis identified suspicious regions of interest (ROIs) in the lungs, with one ROI encompassing early lung cancer in the left lung. A heatmap, which is an intermediate processing output of Chest-CAD and not shown to the end user, clearly focused on the known left infrahilar malignancy and post-obstructive left lower lung atelectasis.",
-    alt: "Chest X-ray — Chest-CAD (AI) read"
+    alt: "Chest X-ray — Chest-CAD (AI) read",
+    points: [
+        "early lung cancer (left) detected by Chest-CAD",
+        "left infrahilar malignancy",
+        "post-obstructive left lower lung atelectasis"
+    ]
 };
 
 const style = document.createElement("style");
@@ -219,6 +230,18 @@ style.textContent = `
 
     .exhibit--alert .is-finding .field__value {
         color: var(--alert);
+    }
+
+    .points {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--ink);
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .points li {
+        margin-bottom: 6px;
     }
 
     details summary {
@@ -423,80 +446,19 @@ function createExhibit(imagePath, data) {
         plate.appendChild(mark);
     }
 
-    const findingField = document.createElement("div");
-    findingField.className = "field is-finding";
+    const list = document.createElement("ul");
+    list.className = "points";
 
-    const findingLabel = document.createElement("p");
-    findingLabel.className = "field__label";
-    findingLabel.textContent = "Finding";
-
-    const findingValue = document.createElement("p");
-    findingValue.className = "field__value";
-    findingValue.textContent = data.finding;
-
-    findingField.appendChild(findingLabel);
-    findingField.appendChild(findingValue);
-
-    const meaningField = document.createElement("div");
-    meaningField.className = "field";
-
-    const meaningLabel = document.createElement("p");
-    meaningLabel.className = "field__label";
-    meaningLabel.textContent = "Meaning";
-
-    const meaningValue = document.createElement("p");
-    meaningValue.className = "field__value";
-    meaningValue.textContent = data.meaning;
-
-    meaningField.appendChild(meaningLabel);
-    meaningField.appendChild(meaningValue);
-
-    const details = document.createElement("details");
-
-    const summary = document.createElement("summary");
-    summary.textContent = "Full read ";
-
-    const arrow = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "svg"
-    );
-
-    arrow.setAttribute("class", "chev");
-    arrow.setAttribute("viewBox", "0 0 24 24");
-    arrow.setAttribute("fill", "none");
-    arrow.setAttribute("stroke", "currentColor");
-    arrow.setAttribute("stroke-width", "2.3");
-    arrow.setAttribute("stroke-linecap", "round");
-    arrow.setAttribute("stroke-linejoin", "round");
-    arrow.setAttribute("aria-hidden", "true");
-
-    const arrowPath = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
-    );
-
-    arrowPath.setAttribute("d", "M6 9l6 6 6-6");
-
-    arrow.appendChild(arrowPath);
-    summary.appendChild(arrow);
-
-    const findings = document.createElement("div");
-    findings.className = "findings";
-
-    const findingsText = document.createElement("p");
-    findingsText.textContent = data.notes;
-
-    findings.appendChild(findingsText);
-
-    details.appendChild(summary);
-    details.appendChild(findings);
+    for (let i = 0; i < data.points.length; i++) {
+        const item = document.createElement("li");
+        item.textContent = data.points[i];
+        list.appendChild(item);
+    }
 
     exhibit.appendChild(label);
     exhibit.appendChild(source);
     exhibit.appendChild(plate);
-    exhibit.appendChild(findingField);
-    exhibit.appendChild(meaningField);
-    exhibit.appendChild(details);
+    exhibit.appendChild(list);
 
     return exhibit;
 }
