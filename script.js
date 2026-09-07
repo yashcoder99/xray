@@ -362,7 +362,7 @@ var wrap = document.createElement("div");
 wrap.className = "wrap";
 
 var heading = document.createElement("h1");
-heading.textContent = "The Comparison of Human and AI reasoning";
+heading.textContent = "Comparison of Human and AI Results";
 wrap.appendChild(heading);
 
 var subtitle = document.createElement("p");
