@@ -117,7 +117,7 @@ style.textContent = "\
 \
     .exhibit__label {\
         font-family: var(--serif);\
-        font-size: 13px;\
+        font-size: 18px;\
         letter-spacing: .1em;\
         text-transform: uppercase;\
         color: var(--ink-muted);\
@@ -127,7 +127,7 @@ style.textContent = "\
     }\
 \
     .exhibit__source {\
-        font-size: 13px;\
+        font-size: 18px;\
         color: var(--ink-muted);\
         margin-bottom: 18px;\
     }\
@@ -175,7 +175,7 @@ style.textContent = "\
         background: var(--paper);\
         font-family: var(--serif);\
         font-weight: 700;\
-        font-size: 11px;\
+        font-size: 15px;\
         letter-spacing: .12em;\
         text-transform: uppercase;\
         padding: 4px 10px;\
@@ -187,7 +187,7 @@ style.textContent = "\
         top: 16px;\
         right: 14px;\
         color: var(--ink-muted);\
-        font-size: 11px;\
+        font-size: 15px;\
         letter-spacing: .1em;\
         text-transform: uppercase;\
     }\
@@ -394,7 +394,7 @@ function createExhibit(imagePath, exhibitLetter, titleText, statusText, altText,
 
     var label = document.createElement("p");
     label.className = "exhibit__label";
-    label.textContent = "Exhibit " + exhibitLetter;
+    label.textContent = "Image " + exhibitLetter;
     exhibit.appendChild(label);
 
     var source = document.createElement("p");
