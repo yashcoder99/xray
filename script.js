@@ -367,7 +367,7 @@ wrap.appendChild(heading);
 
 var subtitle = document.createElement("p");
 subtitle.className = "sub";
-subtitle.textContent = "LEFT IMAGE, No obvious sign of lung disease detected by radiologist (human) \nRIGHT IMAGE, Suspicious “Squamous Cell Carcinoma” diagnosis by AI-driven tool";
+subtitle.textContent = "IMAGE A, No obvious sign of lung disease detected by radiologist (human) \nIMAGE B, Suspicious “Squamous Cell Carcinoma” diagnosis by AI-driven tool";
 wrap.appendChild(subtitle);
 
 var note = document.createElement("p");
