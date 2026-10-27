@@ -32,7 +32,7 @@ style.textContent = "\
         --rule: rgba(23,24,26,.16);\
         --alert: #b3271f;\
         --serif: Georgia, \"Iowan Old Style\", \"Palatino Linotype\", Palatino, \"Book Antiqua\", serif;\
-        --sans: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\
+        --sans: Calibri, Carlito, \"Segoe UI\", Arial, sans-serif;\
     }\
 \
     * {\
