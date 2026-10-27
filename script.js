@@ -48,7 +48,7 @@ style.textContent = "\
         background-color: var(--paper);\
         background-image: none;\
         color: var(--ink);\
-        font-family: var(--serif);\
+        font-family: var(--sans);\
         line-height: 1.6;\
         -webkit-font-smoothing: antialiased;\
     }\
@@ -74,7 +74,7 @@ style.textContent = "\
     }\
 \
     h1 {\
-        font-family: var(--serif);\
+        font-family: var(--sans);\
         font-size: clamp(32px, 5vw, 52px);\
         line-height: 1.15;\
         text-align: center;\
@@ -116,7 +116,7 @@ style.textContent = "\
     }\
 \
     .exhibit__label {\
-        font-family: var(--serif);\
+        font-family: var(--sans);\
         font-size: 18px;\
         letter-spacing: .1em;\
         text-transform: uppercase;\
@@ -173,7 +173,7 @@ style.textContent = "\
         border: 2px solid var(--alert);\
         color: var(--alert);\
         background: var(--paper);\
-        font-family: var(--serif);\
+        font-family: var(--sans);\
         font-weight: 700;\
         font-size: 15px;\
         letter-spacing: .12em;\
@@ -210,7 +210,7 @@ style.textContent = "\
     }\
 \
     .is-finding .field__value {\
-        font-family: var(--serif);\
+        font-family: var(--sans);\
         font-size: clamp(22px, 3vw, 28px);\
         line-height: 1.2;\
         font-weight: 700;\
