@@ -99,20 +99,11 @@ style.textContent = "\
         font-style: italic;\
     }\
 \
-    hr.rule {\
-        border: 0;\
-        border-top: 1px solid var(--rule);\
-        margin: 56px 0 48px;\
-    }\
-\
     .exhibits {\
         display: grid;\
-        grid-template-columns: 1fr 1px 1fr;\
-        column-gap: 48px;\
-    }\
-\
-    .spine {\
-        background: var(--rule);\
+        grid-template-columns: 1fr 1fr;\
+        column-gap: 97px;\
+        margin-top: 105px;\
     }\
 \
     .exhibit__label {\
@@ -121,7 +112,6 @@ style.textContent = "\
         letter-spacing: .1em;\
         text-transform: uppercase;\
         color: var(--ink-muted);\
-        border-bottom: 1px solid var(--rule);\
         padding-bottom: 10px;\
         margin-bottom: 16px;\
     }\
@@ -270,7 +260,6 @@ style.textContent = "\
     details .findings {\
         margin-top: 14px;\
         padding-top: 14px;\
-        border-top: 1px solid var(--rule);\
         font-size: 15px;\
         color: var(--ink);\
         line-height: 1.7;\
@@ -285,7 +274,6 @@ style.textContent = "\
     footer.cite {\
         margin-top: 56px;\
         padding-top: 20px;\
-        border-top: 1px solid var(--rule);\
         font-size: 13px;\
         color: var(--ink-muted);\
         line-height: 1.6;\
@@ -306,21 +294,13 @@ style.textContent = "\
             font-size: clamp(28px, 8vw, 40px);\
         }\
 \
-        hr.rule {\
-            margin: 40px 0 36px;\
-        }\
-\
         .exhibits {\
             grid-template-columns: 1fr;\
             row-gap: 0;\
-        }\
-\
-        .spine {\
-            display: none;\
+            margin-top: 77px;\
         }\
 \
         .exhibit ~ .exhibit {\
-            border-top: 1px solid var(--rule);\
             padding-top: 36px;\
             margin-top: 36px;\
         }\
@@ -374,10 +354,6 @@ var note = document.createElement("p");
 note.className = "note";
 note.textContent = "For demonstration purposes only.";
 wrap.appendChild(note);
-
-var rule = document.createElement("hr");
-rule.className = "rule";
-wrap.appendChild(rule);
 
 var exhibits = document.createElement("div");
 exhibits.className = "exhibits";
@@ -453,11 +429,6 @@ function createExhibit(imagePath, exhibitLetter, titleText, statusText, altText,
 
 var human = createExhibit(humanImagePath, humanExhibit, humanTitle, humanStatus, humanAlt, humanPoints);
 exhibits.appendChild(human);
-
-var spine = document.createElement("div");
-spine.className = "spine";
-spine.setAttribute("aria-hidden", "true");
-exhibits.appendChild(spine);
 
 var ai = createExhibit(aiImagePath, aiExhibit, aiTitle, aiStatus, aiAlt, aiPoints);
 exhibits.appendChild(ai);
